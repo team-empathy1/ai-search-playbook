@@ -1,0 +1,81 @@
+/* ============================================================
+   Team Empathy — Spacing, Radius, Elevation, Borders, Motion
+   ------------------------------------------------------------
+   Per Brand Guidelines V2.0 / 2026. Spacing scale 4/8/16/24/40/
+   64/96. Radius 8–12px buttons & inputs, 14–20px cards, 100px
+   pills. Elevation is a soft drop shadow on cards above coloured
+   surfaces (--shadow-card); restrained everywhere else.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing (4px base) ---- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4  */
+  --space-2:   0.5rem;    /* 8  */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-9:   4rem;      /* 64 */
+  --space-10:  5rem;      /* 80 */
+  --space-12:  6rem;      /* 96 */
+  --space-16:  8rem;      /* 128 */
+  --space-20:  10rem;     /* 160 */
+
+  /* ---- Layout ---- */
+  --container:      1200px; /* @kind spacing */
+  --container-wide: 1360px; /* @kind spacing */
+  --container-text: 720px; /* @kind spacing */
+  --gutter:         clamp(1.25rem, 4vw, 4rem); /* @kind spacing */
+  --section-y:      clamp(4rem, 9vw, 9rem); /* @kind spacing */
+
+  /* ---- Radius (brand: 8–12 controls, 14–20 cards, 100 pill) ---- */
+  --radius-xs:   6px;
+  --radius-sm:   8px;     /* small inputs */
+  --radius-md:   12px;    /* buttons, inputs */
+  --radius-lg:   16px;    /* cards */
+  --radius-xl:   20px;    /* large cards */
+  --radius-2xl:  28px;
+  --radius-pill: 100px;
+  --radius-card: var(--radius-lg);
+  --radius-btn:  var(--radius-md);
+
+  /* ---- Borders ---- */
+  --border-width:   1px; /* @kind spacing */
+  --border-hair:    1px; /* @kind spacing */
+  --ring-width:     2px; /* @kind spacing */
+
+  /* ---- Elevation (brand: soft card shadow over coloured surfaces) ---- */
+  --shadow-xs:  0 1px 2px rgba(12,33,20,0.06);
+  --shadow-sm:  0 2px 8px rgba(12,33,20,0.08);
+  --shadow-md:  0 8px 24px rgba(12,33,20,0.10);
+  --shadow-lg:  0 16px 40px rgba(12,33,20,0.14);
+  --shadow-xl:  0 28px 64px rgba(12,33,20,0.18);
+
+  /* accent rings — sparing emphasis on hover/focus */
+  --glow-royal: 0 0 0 1px color-mix(in oklab, var(--royal) 30%, transparent), 0 10px 30px -8px color-mix(in oklab, var(--royal) 40%, transparent);
+  --glow-sky:   0 0 0 1px rgba(135,209,245,0.30), 0 10px 30px -8px rgba(135,209,245,0.35);
+  --inset-top:  inset 0 1px 0 0 rgba(255,255,255,0.06);
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+
+  --dur-fast:    140ms; /* @kind other */
+  --dur-base:    240ms; /* @kind other */
+  --dur-slow:    420ms; /* @kind other */
+  --dur-slower:  720ms; /* @kind other */
+
+  /* ---- Z-index ---- */
+  --z-base:    0; /* @kind other */
+  --z-raised:  10; /* @kind other */
+  --z-sticky:  100; /* @kind other */
+  --z-overlay: 1000; /* @kind other */
+  --z-modal:   1100; /* @kind other */
+  --z-toast:   1200; /* @kind other */
+
+}

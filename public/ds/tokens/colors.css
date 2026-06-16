@@ -1,0 +1,146 @@
+/* ============================================================
+   Team Empathy — Color System
+   Per Brand Guidelines V2.0 / 2026.
+   ------------------------------------------------------------
+   LIGHT ONLY. White / paper pages are the canvas everywhere.
+   Forest Green is a BLOCK colour (hero / CTA / footer bands,
+   always with .te-atmos gradient depth, never the page base).
+   Royal Blue is the PRIMARY ACCENT — CTAs, links, key emphasis.
+   Sky carries light accents + the accent word on forest blocks.
+   Green is success-only. No dark UI. No pink. No dark red.
+   ============================================================ */
+
+:root {
+  /* ---- Brand core (official hexes) ---- */
+  --forest:      #2C6D3C;   /* Primary brand — block backgrounds   */
+  --royal:       #2874B7;   /* Primary accent — CTAs, links        */
+  --navy:        #1A3B90;   /* Heavyweight headlines on light      */
+  --sky:         #87D1F5;   /* Light accents, dividers, accent word */
+  --green:       #2BB673;   /* Success / positive only             */
+  --charcoal:    #191919;   /* Body text on light                  */
+  --white:       #FFFFFF;
+  --pale-green:  #E8F5EC;   /* Subtle accent backgrounds           */
+  --pale-blue:   #EAF4FB;   /* Subtle accent backgrounds           */
+
+  /* ---- Forest scale (around #2C6D3C — ONLY for forest-block gradient depth & white-on-green cards) ---- */
+  --forest-700: #1E5130;
+  --forest-600: #246339;
+  --forest-500: #2C6D3C;   /* primary */
+  --forest-450: #34823F;   /* brightened, for gradient highlights */
+  --forest-400: #46A156;
+  --forest-300: #67C078;
+
+  /* ---- Royal blue scale ---- */
+  --royal-700: #1F5C95;
+  --royal-600: #2369A8;
+  --royal-500: #2874B7;   /* primary accent */
+  --royal-400: #4A91CE;
+  --royal-300: #7FB4E1;
+
+  /* ---- Sky scale ---- */
+  --sky-200: #BCE6FA;
+  --sky-300: #87D1F5;
+  --sky-400: #5BB8E8;
+
+  /* ---- Neutrals (light side) ---- */
+  --paper-50:  #FBFCFB;
+  --paper-100: #F4F7F4;
+  --line-100:  #ECEFEC;
+  --line-200:  #E1E6E1;
+  --line-300:  #D2DAD3;
+  --grey-700:  #2B332D;
+  --grey-500:  #5C6960;
+  --grey-400:  #7B877F;
+  --ink-900:   #0C1611;
+
+  /* ---- Translucent (for chrome on the forest block) ---- */
+  --on-dark-line:  rgba(135,209,245,0.16);   /* sky @ low alpha — brand divider */
+  --on-dark-soft:  rgba(255,255,255,0.10);
+  --on-dark-strong:rgba(255,255,255,0.22);
+  --scrim-up:      rgba(12,33,20,0.04);   /* hover wash on light */
+
+  /* ---- Functional ---- */
+  --success: #2BB673;
+  --warning: #E0A53A;
+  --danger:  #D9534F;
+  --info:    #2874B7;
+
+  /* =========================================================
+     SEMANTIC ALIASES — default theme is LIGHT
+     (white page · charcoal body · navy headings · royal links)
+     ========================================================= */
+  --bg:            var(--white);
+  --bg-deep:       var(--paper-100);
+  --surface:       var(--white);
+  --surface-2:     var(--paper-100);
+  --surface-inset: var(--pale-green);
+
+  --text:          var(--charcoal);
+  --text-strong:   var(--navy);          /* headlines */
+  --text-muted:    var(--grey-500);
+  --text-faint:    var(--grey-400);
+  --text-invert:   var(--white);
+
+  --accent:        var(--royal);         /* CTAs, primary action */
+  --accent-strong: var(--royal-600);
+  --accent-quiet:  var(--royal-300);
+  --accent-ink:    var(--white);         /* text on royal fill */
+  --brand:         var(--forest);        /* the green block colour */
+  --editorial:     var(--royal);         /* accent word on light */
+  --link:          var(--royal);
+
+  --border:        var(--line-200);
+  --border-soft:   var(--line-100);
+  --border-strong: var(--line-300);
+  --field:         var(--white);
+  --field-border:  var(--line-300);
+
+  --focus-ring:    var(--royal);
+  --selection:     color-mix(in oklab, var(--royal) 18%, transparent);
+
+  /* dot-grid texture (brand motif) — dots ~30% more visible */
+  --grid-dot:      rgba(44,109,60,0.13);
+  --grid-size:     28px;
+
+  /* card shadow over coloured surfaces (brand spec) */
+  --shadow-card:   0 8px 24px rgba(12,33,20,0.08);
+}
+
+/* ============================================================
+   FOREST THEME — the green block (hero, CTA bands, brand visuals)
+   Forest Green background + White cards + Royal Blue CTAs +
+   Sky Blue accent word + sky dot-grid. Apply [data-theme="forest"].
+   ============================================================ */
+[data-theme="forest"] {
+  --bg:            var(--forest-500);
+  --bg-deep:       var(--forest-600);
+  --surface:       var(--white);
+  --surface-2:     rgba(255,255,255,0.08);
+  --surface-inset: rgba(255,255,255,0.06);
+
+  --text:          rgba(255,255,255,0.86);
+  --text-strong:   var(--white);
+  --text-muted:    rgba(255,255,255,0.72);
+  --text-faint:    rgba(255,255,255,0.55);
+  --text-invert:   var(--forest-500);
+
+  --accent:        var(--royal);
+  --accent-strong: var(--royal-400);
+  --accent-quiet:  rgba(255,255,255,0.16);
+  --accent-ink:    var(--white);
+  --editorial:     var(--sky);           /* the sky-blue accent word */
+  --link:          var(--sky);
+
+  --border:        var(--on-dark-line);
+  --border-soft:   rgba(255,255,255,0.08);
+  --border-strong: var(--on-dark-strong);
+  --field:         rgba(255,255,255,0.10);
+  --field-border:  rgba(255,255,255,0.22);
+
+  --focus-ring:    var(--sky);
+  --selection:     color-mix(in oklab, var(--sky) 30%, transparent);
+
+  --grid-dot:      rgba(135,209,245,0.30);  /* sky — brand dot grid on forest, +30% */
+  --scrim-up:      rgba(255,255,255,0.10);
+  --shadow-card:   0 12px 32px rgba(8,22,14,0.22);
+}

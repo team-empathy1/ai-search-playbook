@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-NZ" data-font="brand">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI Search Playbook for Ecommerce — Team Empathy</title>
+<meta name="description" content="A self-paced system for ecommerce stores building AI search visibility. Eleven... twenty-three lessons across five modules. The same SOPs we install for $5M+ Shopify brands, written so your team can run them.">
+<link rel="stylesheet" href="ds/styles.css">
+<style>
+  /* page-local rules layered on top of the design system */
+  body { background: var(--paper-50); }
+  @media (max-width: 1100px) { [data-spot] { display: none !important; } }
+  @media (max-width: 980px)  { [data-pbgrid] { grid-template-columns: 1fr !important; } [data-aside]{ position: static !important; } }
+
+  [data-lesson] { cursor: pointer; user-select: none; }
+  [data-lesson][data-done="true"] [data-box] { background: var(--royal); border-color: var(--royal); color: #fff; }
+  [data-lesson][data-done="true"] [data-box] svg { opacity: 1; }
+  [data-lesson][data-done="true"] [data-title] { color: var(--grey-400); text-decoration: line-through; }
+  [data-lesson] [data-box] svg { opacity: 0; transition: opacity 140ms ease; }
+  [data-lesson]:hover [data-box] { border-color: var(--royal); }
+
+  .l-trio { display: flex; gap: 6px; align-items: center; }
+  .l-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
+           padding: 3px 7px; border-radius: 100px; border: 1px solid var(--line-200); color: var(--grey-400); white-space: nowrap; }
+  .l-tag[data-s="built"] { color: var(--green); border-color: color-mix(in oklab, var(--green) 38%, transparent); background: color-mix(in oklab, var(--green) 8%, transparent); }
+  .l-tag[data-s="port"]  { color: var(--royal-600); border-color: color-mix(in oklab, var(--royal) 34%, transparent); background: color-mix(in oklab, var(--royal) 7%, transparent); }
+  .l-tag[data-s="new"]   { color: var(--grey-500); border-color: var(--line-200); }
+  @media (max-width: 560px) { .l-trio { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header style="position: sticky; top: 0; z-index: 100; background: rgba(251,252,251,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-100);">
+  <div class="te-container" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px;">
+    <a href="#top" style="display: inline-flex;"><img src="img/logo-wordmark-forest.png" alt="Team Empathy" style="height: 24px; display: block;"></a>
+    <nav style="display: flex; align-items: center; gap: 28px;">
+      <a href="#modules" style="color: var(--navy); font-size: var(--text-sm); font-weight: 600;">Learn</a>
+      <a href="#cta" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">The system</a>
+      <a href="https://teamempathy.co.nz" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">About</a>
+    </nav>
+    <a class="te-btn te-btn--primary te-btn--sm" href="#cta">Book a diagnostic</a>
+  </div>
+</header>
+
+<!-- ============ PLAYBOOK HEADER ============ -->
+<section id="top" style="position: relative; padding: 56px 0 28px;">
+  <img data-spot src="img/chart-sprout.svg" alt="" aria-hidden="true" style="position: absolute; top: 60px; right: max(2rem, calc((100vw - 1280px) / 2)); width: 132px; pointer-events: none;">
+  <div class="te-container" style="max-width: 1100px; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; align-items: center; gap: 12px;"><span class="te-eyebrow">The AI Search Playbook · For ecommerce</span><span class="te-badge te-badge--success">Yours to keep</span></div>
+    <h1 style="font-size: clamp(2.4rem, 4.6vw, 3.5rem); line-height: 1.06; max-width: 20ch; margin: 0;">Become the brand AI <span class="te-editorial">recommends</span>. Build it yourself.</h1>
+    <p style="font-size: var(--text-lead); color: var(--grey-500); max-width: 62ch; margin: 0;">A complete self-paced system for ecommerce stores building AI search visibility. Twenty-three lessons across five modules, from your baseline score to the off-site authority that wins the recommendation. The same SOPs we install for $5M+ Shopify brands, written so your team can run them.</p>
+    <p style="font-size: var(--text-sm); color: var(--grey-400); max-width: 62ch; margin: -6px 0 0;">Paid is rented. Search and AI visibility is owned. Built once, refreshed quarterly, it compounds for years. The cost doesn't.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 520px; margin-top: 8px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--grey-400);">Your progress</span>
+        <span id="pb-text" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--royal-600); font-weight: 500;">0 of 23 complete</span>
+      </div>
+      <div style="height: 8px; border-radius: 100px; background: var(--line-200); overflow: hidden;"><div id="pb-fill" style="height: 100%; width: 0%; border-radius: 100px; background: var(--royal); transition: width 320ms cubic-bezier(0.22,1,0.36,1);"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE STEPPER ============ -->
+<section style="padding: 18px 0 8px;">
+  <div class="te-container" style="overflow-x: auto;">
+    <ol id="pb-stepper" class="te-stepper" style="min-width: 720px;"></ol>
+  </div>
+</section>
+
+<!-- ============ MODULES ============ -->
+<section id="modules" style="padding: 32px 0 72px;">
+  <div data-pbgrid class="te-container" style="display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; align-items: start;">
+    <div id="pb-modules" style="display: flex; flex-direction: column; gap: 18px;"></div>
+
+    <aside data-aside style="position: sticky; top: 100px; display: flex; flex-direction: column; gap: 16px;">
+      <div class="te-card te-card--inset">
+        <span class="te-eyebrow" style="color: var(--forest);">Continue where you left off</span>
+        <h3 id="pb-next-title" style="font-size: var(--text-h4); margin: 10px 0 6px;">The new rules of discovery</h3>
+        <p id="pb-next-sub" style="margin: 0 0 14px; font-size: var(--text-sm); color: var(--grey-500);">Module 0, lesson 1. What changed, and why your brand is now optimising to be the answer.</p>
+        <div class="te-prompt te-prompt--bare" style="margin-bottom: 14px;">
+          <div class="te-prompt__bar">
+            <span class="te-prompt__label"><span class="te-prompt__dot"></span>Lesson prompt</span>
+            <button id="pb-copy" class="te-prompt__copy" type="button">Copy</button>
+          </div>
+          <pre id="pb-prompt" class="te-prompt__body">Act as an AI search analyst. For my store [URL], list the ten questions a buyer in my category would ask ChatGPT or Perplexity before purchasing, and note whether my brand is likely to be named in the answer today.</pre>
+        </div>
+        <a id="pb-next-cta" class="te-btn te-btn--primary te-btn--block" href="#">Start the lesson</a>
+      </div>
+
+      <div class="te-callout te-callout--takeaway">
+        <span class="te-callout__label">Yours to keep</span>
+        <div class="te-callout__body"><p>Every lesson, SOP and prompt installs into your business and stays yours. As the models change, our live agents keep them current.</p></div>
+      </div>
+
+      <div class="te-card" style="padding: 16px 18px;">
+        <span class="te-eyebrow" style="color: var(--grey-400);">Each lesson is a trio</span>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px; font-size: var(--text-sm); color: var(--grey-500);">
+          <span><b style="color: var(--charcoal); font-weight: 600;">Loom</b> · a short walkthrough</span>
+          <span><b style="color: var(--charcoal); font-weight: 600;">SOP</b> · the step-by-step you keep</span>
+          <span><b style="color: var(--charcoal); font-weight: 600;">Agent</b> · the Claude prompt that runs it</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" data-theme="forest" class="te-atmos te-grid-fade" style="position: relative; overflow: hidden;">
+  <div class="te-container" style="position: relative; padding-top: 84px; padding-bottom: 84px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <span class="te-eyebrow" style="color: var(--sky);">Prefer we run it?</span>
+    <h2 style="font-size: clamp(2rem, 3.6vw, 2.8rem); max-width: 22ch; margin: 0; color: #FFFFFF;">We will install the whole <span class="te-editorial">playbook</span> for you</h2>
+    <p style="color: rgba(255,255,255,0.78); max-width: 52ch; margin: 0;">A 45-minute working session on your real Shopify data. Zero pitch.</p>
+    <div style="display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; justify-content: center;">
+      <a class="te-btn te-btn--primary te-btn--lg" href="https://teamempathy.co.nz">Book your diagnostic</a>
+      <a class="te-btn te-btn--secondary te-btn--lg" href="https://teamempathy.co.nz">See the offer</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer data-theme="forest" class="te-atmos" style="border-top: 1px solid rgba(255,255,255,0.12);">
+  <div class="te-container" style="padding-top: 44px; padding-bottom: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+    <img src="img/logo-wordmark-white.png" alt="Team Empathy" style="height: 22px; display: block;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="#modules" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">Learn</a>
+      <a href="#cta" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">The system</a>
+      <a href="https://teamempathy.co.nz" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">About</a>
+    </nav>
+  </div>
+  <div class="te-container" style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px; padding-bottom: 26px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: rgba(255,255,255,0.6);">
+    <span>© 2026 Team Empathy · The AI Search Playbook</span>
+    <span>Made in Aotearoa New Zealand 🌿</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   The AI Search Playbook — course data + interactivity
+   Wireframe: completion state persists in localStorage.
+   Build status (built/port/new) is INTERNAL tracking; flip the
+   `internalStatus` flag to false before going public to hide it.
+   ============================================================ */
+const PROMPT_PAGE = "https://ecommerce.teamempathy.co.nz/prompt";
+const STORE_KEY = "te_playbook_state_v1";
+const internalStatus = true; // show Loom/SOP/Agent build chips (internal). Set false for public.
+
+const ACTS = [
+  { num: "0", short: "Orientation", title: "Orientation & baseline", pillar: "Start here",
+    blurb: "Understand what changed, place yourself on the maturity ladder, and lock in your baseline score before you change a thing.",
+    lessons: [
+      { id: "0.1", title: "The new rules of discovery", covers: "Zero-click, AI shopping, and the entity-confidence thesis.", mins: 7, loom: "port", sop: "built", agent: "na" },
+      { id: "0.2", title: "Where you stand: the AI maturity ladder", covers: "Self-place Level 1 to 4 on your AI operation.", mins: 6, loom: "new", sop: "built", agent: "na" },
+      { id: "0.3", title: "Your baseline score", covers: "Run the diagnostic, log mentions, citations and sentiment.", mins: 10, loom: "new", sop: "new", agent: "built", link: PROMPT_PAGE },
+    ] },
+  { num: "1", short: "Get found", title: "Get found", pillar: "Technical foundations",
+    blurb: "The foundations that let AI crawlers find, read and trust your store. Roughly 80 percent already exists in the Foundations guide.",
+    lessons: [
+      { id: "1.1", title: "Open the doors", covers: "robots.txt, CDN, WAF and llms.txt. Stop blocking the crawlers.", mins: 9, loom: "new", sop: "built", agent: "new" },
+      { id: "1.2", title: "Product schema & GTINs", covers: "The single most-missed variable on priority products.", mins: 11, loom: "new", sop: "built", agent: "new" },
+      { id: "1.3", title: "Merchant feed optimisation", covers: "Google, Microsoft and Perplexity feeds. The universal key.", mins: 8, loom: "new", sop: "built", agent: "new" },
+      { id: "1.4", title: "Technical health & data integrity", covers: "Errors, duplication, metadata, Core Web Vitals, PDP consolidation.", mins: 10, loom: "new", sop: "built", agent: "new" },
+      { id: "1.5", title: "Priority pages", covers: "Answer-first restructuring and FAQ schema on the pages that matter.", mins: 9, loom: "new", sop: "built", agent: "port" },
+    ] },
+  { num: "2", short: "Become the answer", title: "Become the answer", pillar: "Content engine",
+    blurb: "The biggest net-new build. Content AI actually cites: clusters, chunk retrieval, freshness and internal linking.",
+    lessons: [
+      { id: "2.1", title: "Keyword & topic research", covers: "Coverage beats volume. What to target and why.", mins: 9, loom: "new", sop: "new", agent: "port" },
+      { id: "2.2", title: "Build your topic clusters", covers: "Pillar and spoke architecture. Map the relationships AI maps.", mins: 10, loom: "new", sop: "new", agent: "new" },
+      { id: "2.3", title: "Write for chunk retrieval", covers: "Answer-first, TL;DR, questions as subheads, parseable formatting.", mins: 11, loom: "new", sop: "new", agent: "new" },
+      { id: "2.4", title: "Drafting with Claude", covers: "Brand voice, structured drafts, the honest limits of DIY.", mins: 10, loom: "new", sop: "new", agent: "port" },
+      { id: "2.5", title: "Refresh & freshness cycles", covers: "Find decaying content in GSC, make substantial edits, the 90-day biology.", mins: 9, loom: "new", sop: "new", agent: "new" },
+      { id: "2.6", title: "Stitch it together", covers: "Internal linking from clusters to pillars to PDPs.", mins: 8, loom: "new", sop: "new", agent: "new" },
+    ] },
+  { num: "3", short: "Get recommended", title: "Get recommended", pillar: "Authority & reputation",
+    blurb: "Only 23 percent of AI citations come from your own site. This module is the other 77 percent. Roughly 95 percent already built.",
+    lessons: [
+      { id: "3.1", title: "Why 77 percent", covers: "Most AI citations come from off your site. The framing.", mins: 7, loom: "new", sop: "built", agent: "na" },
+      { id: "3.2", title: "Review velocity programme", covers: "Semantic prompts, post-purchase sequence, AU/NZ compliance.", mins: 10, loom: "new", sop: "built", agent: "new" },
+      { id: "3.3", title: "Third-party review platforms", covers: "The APAC stack, crawlability, responding well.", mins: 9, loom: "new", sop: "built", agent: "new" },
+      { id: "3.4", title: "Reddit & community presence", covers: "Find your subreddits, declared brand account, rules of engagement.", mins: 10, loom: "new", sop: "built", agent: "new" },
+      { id: "3.5", title: "Digital PR & earned media", covers: "Target publications, pitch, track, the Wikipedia milestone.", mins: 11, loom: "new", sop: "built", agent: "new" },
+      { id: "3.6", title: "LinkedIn & founder presence", covers: "Why it matters for ecommerce, and a sustainable cadence.", mins: 8, loom: "new", sop: "built", agent: "new" },
+    ] },
+  { num: "4", short: "Keep winning", title: "Keep winning", pillar: "Measurement & rhythm",
+    blurb: "Short and light. Track share of voice over time, run the operating rhythm, and know when to bring us in.",
+    lessons: [
+      { id: "4.1", title: "Measure what matters", covers: "Re-run your baseline, track share of voice and sentiment.", mins: 8, loom: "new", sop: "new", agent: "built", link: PROMPT_PAGE },
+      { id: "4.2", title: "The operating rhythm", covers: "Observe, decide, delegate. Weekly and 90-day cadence.", mins: 7, loom: "port", sop: "new", agent: "new" },
+      { id: "4.3", title: "When to DIY, when to bring us in", covers: "Honest build vs buy vs delegate, and your next step.", mins: 6, loom: "port", sop: "new", agent: "na" },
+    ] },
+];
+
+let state = { done: {} };
+try { const r = localStorage.getItem(STORE_KEY); if (r) state = JSON.parse(r); } catch (e) {}
+if (!state.done) state.done = {};
+function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+
+const allLessons = () => ACTS.flatMap(a => a.lessons);
+const isDone = id => !!state.done[id];
+
+const badgeClass = a => a.lessons.every(l => isDone(l.id)) ? "te-badge--success"
+  : a.lessons.some(l => isDone(l.id)) ? "te-badge--accent" : "te-badge--neutral";
+const badgeText = a => {
+  const d = a.lessons.filter(l => isDone(l.id)).length;
+  return d === a.lessons.length ? "Done" : d > 0 ? "In progress" : a.lessons.length + " lessons";
+};
+
+function trio(l) {
+  if (!internalStatus) return "";
+  const lab = { built: "Built", port: "Port", new: "New", na: "—" };
+  const cell = (k, s) => s === "na" ? "" : `<span class="l-tag" data-s="${s}">${k}</span>`;
+  return `<span class="l-trio">${cell("Loom", l.loom)}${cell("SOP", l.sop)}${cell("Agent", l.agent)}</span>`;
+}
+
+function lessonRow(l) {
+  return `<label data-lesson data-id="${l.id}" data-done="${isDone(l.id)}" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line-100);">
+      <span data-box class="te-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--grey-400);min-width:26px;">${l.id}</span>
+      <span style="flex:1;min-width:0;">
+        <span data-title style="display:block;font-size:var(--text-sm);color:var(--charcoal);font-weight:500;">${l.title}</span>
+        <span style="display:block;font-size:var(--text-xs);color:var(--grey-400);margin-top:2px;">${l.covers}</span>
+      </span>
+      ${trio(l)}
+      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--grey-400);white-space:nowrap;">${l.mins} min</span>
+    </label>`;
+}
+
+function moduleCard(a, current) {
+  const raised = a.num === String(current) ? ' te-card--raised' : '';
+  const ring = a.num === String(current) ? ' style="border-color: color-mix(in oklab, var(--royal) 30%, transparent);"' : '';
+  return `<div class="te-card${raised}"${ring}>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px;">
+        <h3 style="font-size:var(--text-h4);margin:0;">Module ${a.num} · ${a.title}</h3>
+        <span class="te-badge ${badgeClass(a)}">${badgeText(a)}</span>
+      </div>
+      <p style="margin:0 0 6px;font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--royal-600);">${a.pillar}</p>
+      <p style="margin:0 0 12px;font-size:var(--text-sm);color:var(--grey-500);">${a.blurb}</p>
+      <div style="display:flex;flex-direction:column;">${a.lessons.map(lessonRow).join("")}</div>
+    </div>`;
+}
+
+function currentActNum() {
+  const a = ACTS.find(act => act.lessons.some(l => !isDone(l.id)));
+  return a ? Number(a.num) : ACTS.length - 1;
+}
+
+function renderStepper() {
+  const cur = currentActNum();
+  document.getElementById("pb-stepper").innerHTML = ACTS.map(a => {
+    const allDone = a.lessons.every(l => isDone(l.id));
+    const st = allDone ? "done" : Number(a.num) === cur ? "current" : "upcoming";
+    const dot = allDone ? "✓" : a.num;
+    return `<li class="te-stepper__step" data-state="${st}"><span class="te-stepper__dot">${dot}</span><span class="te-stepper__label">${a.short}</span></li>`;
+  }).join("");
+}
+
+function renderSidebar() {
+  const next = allLessons().find(l => !isDone(l.id));
+  const t = document.getElementById("pb-next-title");
+  const s = document.getElementById("pb-next-sub");
+  if (!next) {
+    t.textContent = "You have completed the playbook";
+    s.textContent = "Re-run your baseline in 4.1 each quarter, or book a diagnostic and we will pressure-test it with you.";
+    return;
+  }
+  const act = ACTS.find(a => a.lessons.includes(next));
+  t.textContent = next.title;
+  s.textContent = `Module ${act.num}, ${act.title}. ${next.mins} minutes. ${next.covers}`;
+}
+
+function refreshProgress() {
+  const all = allLessons();
+  const done = all.filter(l => isDone(l.id)).length;
+  document.getElementById("pb-fill").style.width = Math.round(done / all.length * 100) + "%";
+  document.getElementById("pb-text").textContent = done + " of " + all.length + " complete";
+}
+
+function renderAll() {
+  const cur = currentActNum();
+  document.getElementById("pb-modules").innerHTML = ACTS.map(a => moduleCard(a, cur)).join("");
+  document.querySelectorAll("[data-lesson]").forEach(row => {
+    row.addEventListener("click", e => {
+      e.preventDefault();
+      const id = row.getAttribute("data-id");
+      state.done[id] = !state.done[id];
+      save();
+      renderAll();
+    });
+  });
+  renderStepper();
+  renderSidebar();
+  refreshProgress();
+}
+
+document.getElementById("pb-copy").addEventListener("click", () => {
+  const txt = document.getElementById("pb-prompt").innerText;
+  if (navigator.clipboard && txt) navigator.clipboard.writeText(txt);
+  const b = document.getElementById("pb-copy");
+  b.textContent = "Copied"; b.setAttribute("data-copied", "true");
+  setTimeout(() => { b.textContent = "Copy"; b.removeAttribute("data-copied"); }, 1600);
+});
+
+renderAll();
+</script>
+</body>
+</html>
