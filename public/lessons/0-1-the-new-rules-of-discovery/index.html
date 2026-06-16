@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-NZ" data-font="brand">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The new rules of discovery — The AI Search Playbook · Team Empathy</title>
+<meta name="description" content="How people find ecommerce brands has changed shape. Zero-click, AI shopping, and the entity-confidence thesis: in 2026 you optimise to become the brand AI recommends, not to rank a page.">
+<link rel="canonical" href="https://playbook.teamempathy.co.nz/lessons/0-1-the-new-rules-of-discovery/">
+<link rel="stylesheet" href="../../ds/styles.css">
+<style>
+  body { background: var(--paper-50); }
+  .lesson-wrap { max-width: 760px; }
+  .crumb { display: inline-flex; align-items: center; gap: 8px; color: var(--grey-500); font-size: var(--text-sm); font-weight: 500; text-decoration: none; }
+  .crumb:hover { color: var(--royal); }
+
+  /* Loom placeholder */
+  .loom { position: relative; aspect-ratio: 16/9; border-radius: var(--radius-lg, 16px); overflow: hidden;
+          border: 1px solid var(--line-200); background:
+          radial-gradient(700px 360px at 30% -20%, rgba(135,209,245,.20), transparent 60%),
+          linear-gradient(180deg, var(--pale-blue), var(--paper-100));
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
+  .loom__play { width: 58px; height: 58px; border-radius: 50%; background: var(--royal); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px -10px rgba(40,116,183,.6); }
+  .loom__play svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+  .loom__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--royal-600); }
+  .loom__sub { font-size: var(--text-sm); color: var(--grey-500); }
+
+  /* article prose */
+  .te-article { color: var(--charcoal); font-size: 1.0625rem; line-height: 1.72; }
+  .te-article > p { margin: 0 0 20px; }
+  .te-article h2 { font-family: var(--font-display, 'Manrope'); color: var(--navy); font-size: 1.5rem; line-height: 1.2; letter-spacing: -.01em; margin: 40px 0 14px; }
+  .te-article ul { margin: 0 0 20px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .te-article ul li { position: relative; padding-left: 26px; }
+  .te-article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--royal); }
+  .te-article strong { color: var(--navy); font-weight: 600; }
+  .te-article a { color: var(--royal); }
+  .src { color: var(--grey-400); font-size: 0.875em; }
+
+  .pullquote { margin: 28px 0; padding: 26px 28px; border-radius: 16px; border: 1px solid color-mix(in oklab, var(--royal) 22%, transparent);
+               background: var(--pale-blue); }
+  .pullquote p { font-family: var(--font-display, 'Manrope'); font-size: 1.3rem; line-height: 1.4; color: var(--navy); margin: 0; font-weight: 600; letter-spacing: -.01em; }
+  .pullquote .label { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--royal-600); }
+
+  blockquote.quote { margin: 24px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--sky-400); }
+  blockquote.quote p { margin: 0 0 8px; font-size: 1.0625rem; color: var(--grey-700); }
+  blockquote.quote cite { font-style: normal; font-size: var(--text-sm); color: var(--grey-500); }
+
+  @media (max-width: 640px) { .te-article h2 { font-size: 1.3rem; } .pullquote p { font-size: 1.12rem; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 100; background: rgba(251,252,251,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-100);">
+  <div class="te-container" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px;">
+    <a href="../../" style="display: inline-flex;"><img src="../../img/logo-wordmark-royal.png" alt="Team Empathy" style="height: 32px; display: block;"></a>
+    <nav style="display: flex; align-items: center; gap: 28px;">
+      <a href="../../" style="color: var(--navy); font-size: var(--text-sm); font-weight: 600;">Learn</a>
+      <a href="../../#cta" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">The system</a>
+      <a href="https://teamempathy.co.nz" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">About</a>
+    </nav>
+    <a class="te-btn te-btn--primary te-btn--sm" href="../../#cta">Book a diagnostic</a>
+  </div>
+</header>
+
+<!-- LESSON HEADER -->
+<section style="position: relative; padding: 40px 0 8px;">
+  <div class="te-container lesson-wrap" style="display: flex; flex-direction: column; gap: 18px;">
+    <a class="crumb" href="../../">← The AI Search Playbook</a>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span class="te-eyebrow">Module 0 · Orientation & baseline · Lesson 0.1</span>
+      <h1 style="font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.08; margin: 0; max-width: 18ch;">The new rules of <span class="te-editorial">discovery</span></h1>
+      <div style="display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--grey-400); letter-spacing: var(--ls-wide); text-transform: uppercase;">
+        <span>7 min read</span><span style="opacity:.5;">·</span><span>Foundational</span>
+      </div>
+    </div>
+    <p style="font-size: var(--text-lead); color: var(--grey-500); margin: 6px 0 0;">The shift in how people find ecommerce brands, before we get to any tactics. Read this once, watch the walkthrough for the full picture, and forward it to anyone on your team who needs the same starting point.</p>
+  </div>
+</section>
+
+<!-- LOOM -->
+<section style="padding: 22px 0 8px;">
+  <div class="te-container lesson-wrap">
+    <div class="loom">
+      <div class="loom__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="loom__label">Walkthrough · coming soon</div>
+      <div class="loom__sub">Ben films the video version of this lesson here.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<section style="padding: 28px 0 16px;">
+  <article class="te-container lesson-wrap te-article">
+
+    <h2>The shift</h2>
+    <p>Search has changed shape.</p>
+    <p>For twenty years, "search" meant typing a few words into Google, looking at ten blue links, and clicking through to read the answer yourself. That is not how most product research happens now. People ask ChatGPT, Perplexity, Claude, or Google's AI Overviews a full question, like "what's the best magnesium glycinate for sleep" or "comfortable trainers for plantar fasciitis under $200", and get a direct answer back. Often with a shortlist of brands. Often without ever clicking a link.</p>
+    <p>The numbers behind it are not subtle:</p>
+    <ul>
+      <li>ChatGPT sent ecommerce brands <strong>1,079% more shopping traffic last year</strong> than the year before. <span class="src">(Visibility Labs / Search Engine Land)</span></li>
+      <li>On Shopify specifically, AI-driven traffic is up <strong>8x</strong> and AI-driven orders up <strong>15x</strong> since January 2025. <span class="src">(Kyle Risley, Senior SEO Lead at Shopify, 2026)</span></li>
+      <li>Visitors from AI platforms convert <strong>31% better</strong> than non-branded organic. <span class="src">(Profound, 94 brands tracked, 2025)</span></li>
+    </ul>
+    <p>This is the current state of how purchase research happens for a serious slice of your category. 61% of consumers have already used an AI tool to research a purchase, and 64% say they plan to do more of it this year. <span class="src">(Adobe Analytics; Shopify, 2026)</span> The traffic models that built the last decade of ecommerce are being replaced by something different.</p>
+
+    <h2>What you're actually optimising for now</h2>
+    <p>This is the mental shift the whole Playbook hinges on:</p>
+    <div class="pullquote">
+      <span class="label">The thesis</span>
+      <p>In 2026, you are not optimising for a ranking algorithm. You are optimising to become the entity AI systems have the highest confidence in recommending for your category.</p>
+    </div>
+    <p>That is a structural change. The old job was making one page rank higher than another for one keyword. The new job is making your brand the answer an AI gives when someone asks a question about your category. Shopify APAC's Director of Partnerships puts it the same way:</p>
+    <blockquote class="quote">
+      <p>"Search is becoming a conversation, and commerce is becoming agentic. In 2026, visibility is less about being the loudest, and more about being the easiest for machines to understand and trust."</p>
+      <cite>Rhys Furner, Shopify APAC</cite>
+    </blockquote>
+    <p>AI returns the answer. The first brand it names is the brand the customer considers first.</p>
+    <p><strong>93% of AI search sessions now end without anyone clicking through to a website.</strong> <span class="src">(AirOps 2026 State of AI Search Report)</span> The consideration set is decided inside the AI before you would traditionally know the customer existed.</p>
+    <p>Everything else in this Playbook, the technical foundations, the content engine, the reviews, the digital PR, the Reddit work, the LinkedIn presence, all of it builds the confidence AI has in recommending your brand.</p>
+
+    <h2>Why this is the 2011 window all over again</h2>
+    <p>Think about who won SEO between 2011 and 2015. The brands that built the asset early, while it was still cheap to do. They compounded for a decade. They paid less and less for traffic while everyone else paid more.</p>
+    <p>The same window is open right now, just one platform shift further on.</p>
+    <p>The brands that install AI search visibility in 2026 will quietly compound past competitors who are still trying to outspend their way to growth. Most founders have not priced this into their growth model yet. That is the opportunity.</p>
+
+    <h2>Paid is rented. Search and AI is owned.</h2>
+    <p>Paid ads work while you spend. The day you stop, it stops. CACs are creeping. MERs are flattening. The maths gets harder every quarter.</p>
+    <p>Search and AI visibility is the opposite shape of asset. Built once, refreshed quarterly, it keeps sending qualified buyers month after month, year after year. The asset compounds. The cost does not.</p>
+    <p>That is the system the Playbook teaches you to build.</p>
+
+    <h2>What's next</h2>
+    <p>You now have the why.</p>
+    <p><strong>0.2 Where you stand</strong> places you on the AI maturity ladder so you know exactly where you are starting from. Then you will run the diagnostic and lock in your baseline score in <strong>0.3 Your baseline score</strong>.</p>
+    <p>Then the build starts.</p>
+  </article>
+</section>
+
+<!-- LESSON FOOTER: complete + next -->
+<section style="padding: 16px 0 64px;">
+  <div class="te-container lesson-wrap" style="display: flex; flex-direction: column; gap: 16px;">
+    <div class="te-card te-card--raised" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <div>
+        <h3 style="font-size: var(--text-h4); margin: 0 0 4px;">Done with this lesson?</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--grey-500);">Mark it complete and your progress saves automatically.</p>
+      </div>
+      <button id="markBtn" class="te-btn te-btn--primary" type="button">Mark complete</button>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;">
+      <a class="crumb" href="../../">← Back to the playbook</a>
+      <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--grey-400); letter-spacing: var(--ls-wide); text-transform: uppercase;">Up next · 0.2 Where you stand <span style="opacity:.6;">(coming soon)</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" data-theme="forest" class="te-atmos te-grid-fade" style="position: relative; overflow: hidden;">
+  <div class="te-container" style="position: relative; padding-top: 80px; padding-bottom: 80px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <span class="te-eyebrow" style="color: var(--sky);">Prefer we run it?</span>
+    <h2 style="font-size: clamp(2rem, 3.6vw, 2.8rem); max-width: 22ch; margin: 0; color: #FFFFFF;">We will install the whole <span class="te-editorial">playbook</span> for you</h2>
+    <p style="color: rgba(255,255,255,0.78); max-width: 52ch; margin: 0;">A 45-minute working session on your real Shopify data. Zero pitch.</p>
+    <div style="display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; justify-content: center;">
+      <a class="te-btn te-btn--primary te-btn--lg" href="https://teamempathy.co.nz">Book your diagnostic</a>
+      <a class="te-btn te-btn--secondary te-btn--lg" href="https://teamempathy.co.nz">See the offer</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-theme="forest" class="te-atmos" style="border-top: 1px solid rgba(255,255,255,0.12);">
+  <div class="te-container" style="padding-top: 44px; padding-bottom: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+    <img src="../../img/logo-wordmark-white.png" alt="Team Empathy" style="height: 22px; display: block;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="../../" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">Learn</a>
+      <a href="../../#cta" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">The system</a>
+      <a href="https://teamempathy.co.nz" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">About</a>
+    </nav>
+  </div>
+  <div class="te-container" style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px; padding-bottom: 26px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: rgba(255,255,255,0.6);">
+    <span>© 2026 Team Empathy · The AI Search Playbook</span>
+    <span>Made in Aotearoa New Zealand 🌿</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The new rules of discovery",
+  "description": "How people find ecommerce brands has changed shape. Zero-click, AI shopping, and the entity-confidence thesis.",
+  "author": { "@type": "Organization", "name": "Team Empathy", "url": "https://teamempathy.co.nz" },
+  "publisher": { "@type": "Organization", "name": "Team Empathy" },
+  "isPartOf": { "@type": "Course", "name": "The AI Search Playbook for Ecommerce" },
+  "inLanguage": "en-NZ"
+}
+</script>
+
+<script>
+/* sync completion with the hub (same localStorage key) */
+const STORE_KEY = "te_playbook_state_v1";
+const LESSON_ID = "0.1";
+let state = { done: {} };
+try { const r = localStorage.getItem(STORE_KEY); if (r) state = JSON.parse(r); } catch (e) {}
+if (!state.done) state.done = {};
+
+const btn = document.getElementById("markBtn");
+function paint() {
+  const done = !!state.done[LESSON_ID];
+  btn.textContent = done ? "Completed ✓" : "Mark complete";
+  btn.classList.toggle("te-btn--primary", !done);
+  btn.classList.toggle("te-btn--secondary", done);
+}
+btn.addEventListener("click", () => {
+  state.done[LESSON_ID] = !state.done[LESSON_ID];
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+  paint();
+});
+paint();
+</script>
+</body>
+</html>

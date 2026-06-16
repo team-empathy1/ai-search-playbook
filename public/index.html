@@ -12,12 +12,15 @@
   @media (max-width: 1100px) { [data-spot] { display: none !important; } }
   @media (max-width: 980px)  { [data-pbgrid] { grid-template-columns: 1fr !important; } [data-aside]{ position: static !important; } }
 
-  [data-lesson] { cursor: pointer; user-select: none; }
+  [data-lesson] [data-box] { cursor: pointer; }
+  [data-lesson] [data-toggle] { user-select: none; }
   [data-lesson][data-done="true"] [data-box] { background: var(--royal); border-color: var(--royal); color: #fff; }
   [data-lesson][data-done="true"] [data-box] svg { opacity: 1; }
   [data-lesson][data-done="true"] [data-title] { color: var(--grey-400); text-decoration: line-through; }
   [data-lesson] [data-box] svg { opacity: 0; transition: opacity 140ms ease; }
-  [data-lesson]:hover [data-box] { border-color: var(--royal); }
+  [data-lesson] [data-box]:hover { border-color: var(--royal); }
+  [data-lesson] a[data-go] [data-title] { transition: color 140ms ease; }
+  [data-lesson] a[data-go]:hover [data-title] { color: var(--royal); }
 
   .l-trio { display: flex; gap: 6px; align-items: center; }
   .l-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
@@ -33,7 +36,7 @@
 <!-- ============ NAV ============ -->
 <header style="position: sticky; top: 0; z-index: 100; background: rgba(251,252,251,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-100);">
   <div class="te-container" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px;">
-    <a href="#top" style="display: inline-flex;"><img src="img/logo-wordmark-forest.png" alt="Team Empathy" style="height: 24px; display: block;"></a>
+    <a href="#top" style="display: inline-flex;"><img src="img/logo-wordmark-royal.png" alt="Team Empathy" style="height: 32px; display: block;"></a>
     <nav style="display: flex; align-items: center; gap: 28px;">
       <a href="#modules" style="color: var(--navy); font-size: var(--text-sm); font-weight: 600;">Learn</a>
       <a href="#cta" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">The system</a>
@@ -95,11 +98,12 @@
       </div>
 
       <div class="te-card" style="padding: 16px 18px;">
-        <span class="te-eyebrow" style="color: var(--grey-400);">Each lesson is a trio</span>
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px; font-size: var(--text-sm); color: var(--grey-500);">
-          <span><b style="color: var(--charcoal); font-weight: 600;">Loom</b> · a short walkthrough</span>
+        <span class="te-eyebrow" style="color: var(--grey-400);">What's in a lesson</span>
+        <p style="margin: 10px 0 12px; font-size: var(--text-sm); color: var(--grey-500);">Most lessons include up to three things. Not every one has the full set, and that is fine.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: var(--text-sm); color: var(--grey-500);">
+          <span><b style="color: var(--charcoal); font-weight: 600;">Loom</b> · a short video walkthrough</span>
           <span><b style="color: var(--charcoal); font-weight: 600;">SOP</b> · the step-by-step you keep</span>
-          <span><b style="color: var(--charcoal); font-weight: 600;">Agent</b> · the Claude prompt that runs it</span>
+          <span><b style="color: var(--charcoal); font-weight: 600;">Agent</b> · a Claude prompt that runs it for you</span>
         </div>
       </div>
     </aside>
@@ -150,7 +154,7 @@ const ACTS = [
   { num: "0", short: "Orientation", title: "Orientation & baseline", pillar: "Start here",
     blurb: "Understand what changed, place yourself on the maturity ladder, and lock in your baseline score before you change a thing.",
     lessons: [
-      { id: "0.1", title: "The new rules of discovery", covers: "Zero-click, AI shopping, and the entity-confidence thesis.", mins: 7, loom: "port", sop: "built", agent: "na" },
+      { id: "0.1", title: "The new rules of discovery", covers: "Zero-click, AI shopping, and the entity-confidence thesis.", mins: 7, loom: "port", sop: "built", agent: "na", url: "lessons/0-1-the-new-rules-of-discovery/" },
       { id: "0.2", title: "Where you stand: the AI maturity ladder", covers: "Self-place Level 1 to 4 on your AI operation.", mins: 6, loom: "new", sop: "built", agent: "na" },
       { id: "0.3", title: "Your baseline score", covers: "Run the diagnostic, log mentions, citations and sentiment.", mins: 10, loom: "new", sop: "new", agent: "built", link: PROMPT_PAGE },
     ] },
@@ -215,16 +219,17 @@ function trio(l) {
 }
 
 function lessonRow(l) {
-  return `<label data-lesson data-id="${l.id}" data-done="${isDone(l.id)}" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line-100);">
-      <span data-box class="te-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--grey-400);min-width:26px;">${l.id}</span>
-      <span style="flex:1;min-width:0;">
-        <span data-title style="display:block;font-size:var(--text-sm);color:var(--charcoal);font-weight:500;">${l.title}</span>
-        <span style="display:block;font-size:var(--text-xs);color:var(--grey-400);margin-top:2px;">${l.covers}</span>
-      </span>
-      ${trio(l)}
-      <span style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--grey-400);white-space:nowrap;">${l.mins} min</span>
-    </label>`;
+  const titleInner = `<span data-title style="display:block;font-size:var(--text-base);color:var(--charcoal);font-weight:500;">${l.title}</span>
+        <span style="display:block;font-size:var(--text-sm);color:var(--grey-400);margin-top:3px;line-height:1.45;">${l.covers}</span>`;
+  const main = l.url
+    ? `<a href="${l.url}" data-go style="flex:1;min-width:0;text-decoration:none;">${titleInner}</a>`
+    : `<span data-toggle style="flex:1;min-width:0;cursor:pointer;">${titleInner}</span>`;
+  return `<div data-lesson data-id="${l.id}" data-done="${isDone(l.id)}" style="display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line-100);">
+      <span data-box title="Mark complete" class="te-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--grey-400);min-width:28px;">${l.id}</span>
+      ${main}
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--grey-400);white-space:nowrap;">${l.mins} min</span>
+    </div>`;
 }
 
 function moduleCard(a, current) {
@@ -236,7 +241,7 @@ function moduleCard(a, current) {
         <span class="te-badge ${badgeClass(a)}">${badgeText(a)}</span>
       </div>
       <p style="margin:0 0 6px;font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--royal-600);">${a.pillar}</p>
-      <p style="margin:0 0 12px;font-size:var(--text-sm);color:var(--grey-500);">${a.blurb}</p>
+      <p style="margin:0 0 12px;font-size:var(--text-base);line-height:1.5;color:var(--grey-500);">${a.blurb}</p>
       <div style="display:flex;flex-direction:column;">${a.lessons.map(lessonRow).join("")}</div>
     </div>`;
 }
@@ -260,14 +265,19 @@ function renderSidebar() {
   const next = allLessons().find(l => !isDone(l.id));
   const t = document.getElementById("pb-next-title");
   const s = document.getElementById("pb-next-sub");
+  const cta = document.getElementById("pb-next-cta");
   if (!next) {
     t.textContent = "You have completed the playbook";
     s.textContent = "Re-run your baseline in 4.1 each quarter, or book a diagnostic and we will pressure-test it with you.";
+    cta.textContent = "Book a diagnostic";
+    cta.href = "#cta";
     return;
   }
   const act = ACTS.find(a => a.lessons.includes(next));
   t.textContent = next.title;
   s.textContent = `Module ${act.num}, ${act.title}. ${next.mins} minutes. ${next.covers}`;
+  if (next.url) { cta.textContent = "Start the lesson"; cta.href = next.url; cta.style.opacity = ""; cta.style.pointerEvents = ""; }
+  else { cta.textContent = "More lessons coming soon"; cta.href = "#modules"; cta.style.opacity = "0.6"; cta.style.pointerEvents = "none"; }
 }
 
 function refreshProgress() {
@@ -281,13 +291,11 @@ function renderAll() {
   const cur = currentActNum();
   document.getElementById("pb-modules").innerHTML = ACTS.map(a => moduleCard(a, cur)).join("");
   document.querySelectorAll("[data-lesson]").forEach(row => {
-    row.addEventListener("click", e => {
-      e.preventDefault();
-      const id = row.getAttribute("data-id");
-      state.done[id] = !state.done[id];
-      save();
-      renderAll();
-    });
+    const id = row.getAttribute("data-id");
+    const toggle = () => { state.done[id] = !state.done[id]; save(); renderAll(); };
+    row.querySelector("[data-box]").addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); toggle(); });
+    const t = row.querySelector("[data-toggle]");
+    if (t) t.addEventListener("click", toggle);
   });
   renderStepper();
   renderSidebar();
