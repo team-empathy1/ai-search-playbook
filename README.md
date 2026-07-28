@@ -20,13 +20,23 @@ playbook/
 
 ## Editing content
 
-All 23 lessons live in the `ACTS` array near the top of the `<script>` block in `index.html`.
-Each lesson: `{ id, title, covers, mins, loom, sop, agent, link? }`. Status values for the
-trio chips: `built` (asset exists), `port` (from earlier work), `new` (to build), `na`.
+**Lesson pages are generated.** All 31 lessons' content lives in `generator/content/m0.py`
+through `m4.py` (one file per module). Edit the content there, then rebuild:
 
-- `internalStatus = true` shows the Loom / SOP / Agent build-status chips (for tracking the
-  build). **Set it to `false` before going fully public** so students don't see internal status.
-- Lesson completion persists per-browser in `localStorage` (`te_playbook_state_v1`).
+```bash
+python3 generator/build.py
+```
+
+That emits every `public/lessons/<slug>/index.html` (pure static HTML, no JS needed for
+content — AI crawlers don't run JavaScript), plus `sitemap.xml`, `robots.txt` and `llms.txt`.
+Shared page chrome (nav, styles, footer, JSON-LD, mark-complete) lives in `generator/chrome.py`.
+
+Each lesson dict: `id, slug, title, h1, description, tag, mins, lead, body (HTML), donow
+(list), prompt (optional Claude prompt), app (show the app-coming-soon chip)`.
+
+**The hub** (`public/index.html`) holds the module/lesson index in its `ACTS` array — keep it
+in sync with the generator content when adding lessons. Lesson completion persists per-browser
+in `localStorage` (`te_playbook_state_v1`), shared between hub and lesson pages.
 
 ## Preview locally
 
