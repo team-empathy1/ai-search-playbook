@@ -1,0 +1,262 @@
+"""Shared page chrome for The AI Search Playbook lesson pages.
+
+build.py imports render_lesson() and hands it one lesson dict + prev/next.
+Every lesson page is emitted as pure static HTML (AI crawlers don't run JS,
+so the content, nav and prev/next links are all real markup).
+"""
+
+SITE = "https://playbook.teamempathy.co.nz"
+
+HEAD = """<!DOCTYPE html>
+<html lang="en-NZ" data-font="brand">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — The AI Search Playbook · Team Empathy</title>
+<meta name="description" content="{description}">
+<link rel="canonical" href="{site}/lessons/{slug}/">
+<link rel="stylesheet" href="../../ds/styles.css">
+<style>
+  body {{ background: var(--paper-50); }}
+  .lesson-wrap {{ max-width: 760px; }}
+  .crumb {{ display: inline-flex; align-items: center; gap: 8px; color: var(--grey-500); font-size: var(--text-sm); font-weight: 500; text-decoration: none; }}
+  .crumb:hover {{ color: var(--royal); }}
+
+  .te-article {{ color: var(--charcoal); font-size: 1.0625rem; line-height: 1.72; }}
+  .te-article > p {{ margin: 0 0 20px; }}
+  .te-article h2 {{ font-family: var(--font-display, 'Manrope'); color: var(--navy); font-size: 1.5rem; line-height: 1.2; letter-spacing: -.01em; margin: 40px 0 14px; }}
+  .te-article ul, .te-article ol {{ margin: 0 0 20px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }}
+  .te-article ul li, .te-article ol li {{ position: relative; padding-left: 26px; }}
+  .te-article ul li::before {{ content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--royal); }}
+  .te-article ol {{ counter-reset: telist; }}
+  .te-article ol li {{ counter-increment: telist; padding-left: 32px; }}
+  .te-article ol li::before {{ content: counter(telist); position: absolute; left: 0; top: 2px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--royal-600); font-weight: 600; border: 1px solid var(--line-200); border-radius: 6px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }}
+  .te-article strong {{ color: var(--navy); font-weight: 600; }}
+  .te-article a {{ color: var(--royal); }}
+  .src {{ color: var(--grey-400); font-size: 0.875em; }}
+
+  .pullquote {{ margin: 28px 0; padding: 26px 28px; border-radius: 16px; border: 1px solid color-mix(in oklab, var(--royal) 22%, transparent); background: var(--pale-blue); }}
+  .pullquote p {{ font-family: var(--font-display, 'Manrope'); font-size: 1.3rem; line-height: 1.4; color: var(--navy); margin: 0; font-weight: 600; letter-spacing: -.01em; }}
+  .pullquote .label {{ display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--royal-600); }}
+
+  blockquote.quote {{ margin: 24px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--sky-400); }}
+  blockquote.quote p {{ margin: 0 0 8px; font-size: 1.0625rem; color: var(--grey-700); }}
+  blockquote.quote cite {{ font-style: normal; font-size: var(--text-sm); color: var(--grey-500); }}
+
+  .donow {{ margin: 36px 0 8px; padding: 22px 24px; border-radius: 16px; background: var(--pale-green); border: 1px solid color-mix(in oklab, var(--forest) 24%, transparent); }}
+  .donow .label {{ display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--forest); font-weight: 600; }}
+  .donow p {{ margin: 0 0 10px; font-size: 1rem; line-height: 1.6; color: var(--charcoal); }}
+  .donow p:last-child {{ margin-bottom: 0; }}
+
+  .app-soon {{ display: flex; align-items: flex-start; gap: 12px; margin: 18px 0 0; padding: 14px 18px; border-radius: 12px; border: 1px dashed var(--line-300); background: var(--paper-100); }}
+  .app-soon .dot {{ margin-top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--sky-400); flex-shrink: 0; }}
+  .app-soon p {{ margin: 0; font-size: var(--text-sm); color: var(--grey-500); line-height: 1.55; }}
+  .app-soon b {{ color: var(--navy); font-weight: 600; }}
+
+  .tag-soon {{ font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; background: var(--pale-blue); color: var(--royal-600); border: 1px solid color-mix(in oklab, var(--royal) 25%, transparent); white-space: nowrap; }}
+
+  @media (max-width: 640px) {{ .te-article h2 {{ font-size: 1.3rem; }} .pullquote p {{ font-size: 1.12rem; }} }}
+</style>
+</head>
+<body>
+
+<header style="position: sticky; top: 0; z-index: 100; background: rgba(251,252,251,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-100);">
+  <div class="te-container" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px;">
+    <a href="../../" style="display: inline-flex;"><img src="../../img/logo-wordmark-royal.png" alt="Team Empathy" style="height: 32px; display: block;"></a>
+    <nav style="display: flex; align-items: center; gap: 28px;">
+      <a href="../../" style="color: var(--navy); font-size: var(--text-sm); font-weight: 600;">Learn</a>
+      <a href="../../#cta" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">The system</a>
+      <a href="https://teamempathy.co.nz" style="color: var(--grey-500); font-size: var(--text-sm); font-weight: 500;">About</a>
+    </nav>
+    <a class="te-btn te-btn--primary te-btn--sm" href="https://teamempathy.co.nz/contact">Book a diagnostic</a>
+  </div>
+</header>
+
+<section style="position: relative; padding: 40px 0 8px;">
+  <div class="te-container lesson-wrap" style="display: flex; flex-direction: column; gap: 18px;">
+    <a class="crumb" href="../../">← The AI Search Playbook</a>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span class="te-eyebrow">Module {mod} · {modname} · Lesson {id}</span>
+      <h1 style="font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.08; margin: 0; max-width: 20ch;">{h1}</h1>
+      <div style="display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--grey-400); letter-spacing: var(--ls-wide); text-transform: uppercase;">
+        <span>{mins} min read</span><span style="opacity:.5;">·</span><span>{tag}</span>
+      </div>
+    </div>
+    <p style="font-size: var(--text-lead); color: var(--grey-500); margin: 6px 0 0;">{lead}</p>
+  </div>
+</section>
+
+<section style="padding: 28px 0 16px;">
+  <article class="te-container lesson-wrap te-article">
+{body}
+{donow_html}
+{prompt_html}
+{app_html}
+  </article>
+</section>
+
+<section style="padding: 16px 0 64px;">
+  <div class="te-container lesson-wrap" style="display: flex; flex-direction: column; gap: 16px;">
+    <div class="te-card te-card--raised" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <div>
+        <h3 style="font-size: var(--text-h4); margin: 0 0 4px;">Done with this lesson?</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--grey-500);">Mark it complete and your progress saves automatically.</p>
+      </div>
+      <button id="markBtn" class="te-btn te-btn--primary" type="button">Mark complete</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;">
+      {prev_link}
+      {next_link}
+    </div>
+  </div>
+</section>
+
+<footer id="cta" data-theme="forest" class="te-atmos te-grid-fade" style="position: relative; overflow: hidden;">
+  <div class="te-container" style="position: relative; z-index: 1; padding-top: 80px; padding-bottom: 60px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <span class="te-eyebrow" style="color: var(--sky);">Prefer we run it?</span>
+    <h2 style="font-size: clamp(2rem, 3.6vw, 2.8rem); max-width: 22ch; margin: 0; color: #FFFFFF;">We will install the whole <span class="te-editorial">playbook</span> for you</h2>
+    <p style="color: rgba(255,255,255,0.78); max-width: 52ch; margin: 0;">A 45-minute working session on your real Shopify data. Zero pitch.</p>
+    <div style="display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; justify-content: center;">
+      <a class="te-btn te-btn--primary te-btn--lg" href="https://teamempathy.co.nz/contact">Book your diagnostic</a>
+      <a class="te-btn te-btn--secondary te-btn--lg" href="https://teamempathy.co.nz/services">See the offer</a>
+    </div>
+  </div>
+  <div class="te-container" style="position: relative; z-index: 1;">
+    <div style="border-top: 1px solid rgba(255,255,255,0.14); padding-top: 32px; padding-bottom: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+      <img src="../../img/logo-wordmark-white.png" alt="Team Empathy" style="height: 22px; display: block;">
+      <nav style="display: flex; gap: 24px;">
+        <a href="../../" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">Learn</a>
+        <a href="../../#cta" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">The system</a>
+        <a href="https://teamempathy.co.nz" style="color: rgba(255,255,255,0.78); font-size: var(--text-sm);">About</a>
+      </nav>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.10); padding-top: 16px; padding-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--ls-wide); text-transform: uppercase; color: rgba(255,255,255,0.6);">
+      <span>© 2026 Team Empathy · The AI Search Playbook</span>
+      <span>Made in Aotearoa New Zealand 🌿</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{title}",
+  "description": "{description}",
+  "author": {{ "@type": "Organization", "name": "Team Empathy", "url": "https://teamempathy.co.nz" }},
+  "publisher": {{ "@type": "Organization", "name": "Team Empathy" }},
+  "isPartOf": {{ "@type": "Course", "name": "The AI Search Playbook for Ecommerce" }},
+  "inLanguage": "en-NZ"
+}}
+</script>
+
+<script>
+const STORE_KEY = "te_playbook_state_v1";
+const LESSON_ID = "{id}";
+let state = {{ done: {{}} }};
+try {{ const r = localStorage.getItem(STORE_KEY); if (r) state = JSON.parse(r); }} catch (e) {{}}
+if (!state.done) state.done = {{}};
+const btn = document.getElementById("markBtn");
+function paint() {{
+  const done = !!state.done[LESSON_ID];
+  btn.textContent = done ? "Completed ✓" : "Mark complete";
+  btn.classList.toggle("te-btn--primary", !done);
+  btn.classList.toggle("te-btn--secondary", done);
+}}
+btn.addEventListener("click", () => {{
+  state.done[LESSON_ID] = !state.done[LESSON_ID];
+  try {{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }} catch (e) {{}}
+  paint();
+}});
+paint();
+document.querySelectorAll("[data-copy]").forEach(b => {{
+  b.addEventListener("click", () => {{
+    const pre = document.getElementById(b.getAttribute("data-copy"));
+    if (pre && navigator.clipboard) navigator.clipboard.writeText(pre.innerText);
+    const old = b.textContent; b.textContent = "Copied"; b.setAttribute("data-copied", "true");
+    setTimeout(() => {{ b.textContent = old; b.removeAttribute("data-copied"); }}, 1600);
+  }});
+}});
+</script>
+</body>
+</html>
+"""
+
+MODULE_NAMES = {
+    "0": "Orientation & baseline",
+    "1": "Get found",
+    "2": "Become the answer",
+    "3": "Get recommended",
+    "4": "Keep winning",
+}
+
+
+def esc_attr(s):
+    return s.replace('"', "&quot;")
+
+
+def render_lesson(l, prev_l, next_l, prompt_counter=[0]):
+    mod = l["id"].split(".")[0]
+
+    donow_html = ""
+    if l.get("donow"):
+        donow_html = (
+            '    <div class="donow">\n'
+            '      <span class="label">Do this now</span>\n'
+            + "".join(f"      <p>{p}</p>\n" for p in l["donow"])
+            + "    </div>\n"
+        )
+
+    prompt_html = ""
+    if l.get("prompt"):
+        pid = "prompt-" + l["id"].replace(".", "-")
+        prompt_html = (
+            '    <div class="te-prompt te-prompt--bare" style="margin-top: 18px;">\n'
+            '      <div class="te-prompt__bar">\n'
+            f'        <span class="te-prompt__label"><span class="te-prompt__dot"></span>{l.get("prompt_label", "Run it with Claude")}</span>\n'
+            f'        <button class="te-prompt__copy" type="button" data-copy="{pid}">Copy</button>\n'
+            "      </div>\n"
+            f'      <pre id="{pid}" class="te-prompt__body">{l["prompt"]}</pre>\n'
+            "    </div>\n"
+        )
+
+    app_html = ""
+    if l.get("app", True):
+        app_html = (
+            '    <div class="app-soon">\n'
+            '      <span class="dot"></span>\n'
+            "      <p><b>The AI Search OS for Shopify · coming soon.</b> We're building the app that runs this lesson for you on your live store, on autopilot. The playbook is the manual version, and it works today.</p>\n"
+            "    </div>\n"
+        )
+
+    prev_link = '<span></span>'
+    if prev_l:
+        prev_link = f'<a class="crumb" href="../{prev_l["slug"]}/">← {prev_l["id"]} {prev_l["title"]}</a>'
+    else:
+        prev_link = '<a class="crumb" href="../../">← Back to the playbook</a>'
+
+    next_link = ""
+    if next_l:
+        next_link = f'<a class="crumb" href="../{next_l["slug"]}/">{next_l["id"]} {next_l["title"]} →</a>'
+    else:
+        next_link = '<a class="crumb" href="../../">Back to the playbook →</a>'
+
+    return HEAD.format(
+        title=l["title"],
+        description=esc_attr(l["description"]),
+        site=SITE,
+        slug=l["slug"],
+        mod=mod,
+        modname=MODULE_NAMES[mod],
+        id=l["id"],
+        h1=l["h1"],
+        mins=l["mins"],
+        tag=l.get("tag", "Lesson"),
+        lead=l["lead"],
+        body=l["body"],
+        donow_html=donow_html,
+        prompt_html=prompt_html,
+        app_html=app_html,
+        prev_link=prev_link,
+        next_link=next_link,
+    )

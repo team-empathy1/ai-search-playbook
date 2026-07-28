@@ -1,0 +1,22 @@
+# The AI Search Playbook — teamempathy.co.nz
+# We teach stores to open the doors to AI crawlers. Ours are open.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://playbook.teamempathy.co.nz/sitemap.xml

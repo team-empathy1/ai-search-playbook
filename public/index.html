@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The AI Search Playbook for Ecommerce — Team Empathy</title>
-<meta name="description" content="A self-paced system for ecommerce stores building AI search visibility. Eleven... twenty-three lessons across five modules. The same SOPs we install for $5M+ Shopify brands, written so your team can run them.">
+<meta name="description" content="A free, self-paced system for Shopify stores building AI search visibility. 31 lessons across five modules: technical foundations, content, authority and measurement. Become the brand AI recommends.">
 <link rel="stylesheet" href="ds/styles.css">
 <style>
   /* page-local rules layered on top of the design system */
@@ -52,7 +52,7 @@
   <div class="te-container" style="max-width: 1100px; display: flex; flex-direction: column; gap: 20px;">
     <div style="display: flex; align-items: center; gap: 12px;"><span class="te-eyebrow">The AI Search Playbook · For ecommerce</span><span class="te-badge te-badge--success">Yours to keep</span></div>
     <h1 style="font-size: clamp(2.4rem, 4.6vw, 3.5rem); line-height: 1.06; max-width: 20ch; margin: 0;">Become the brand AI <span class="te-editorial">recommends</span>. Build it yourself.</h1>
-    <p style="font-size: var(--text-lead); color: var(--grey-500); max-width: 62ch; margin: 0;">A complete self-paced system for ecommerce stores building AI search visibility. Twenty-three lessons across five modules, from your baseline score to the off-site authority that wins the recommendation. The same SOPs we install for $5M+ Shopify brands, written so your team can run them.</p>
+    <p style="font-size: var(--text-lead); color: var(--grey-500); max-width: 62ch; margin: 0;">A free, self-paced system for Shopify stores building AI search visibility. Thirty-one lessons across five modules, from your baseline score to the off-site authority that wins the recommendation. The same playbook we install for $5M+ brands, written so you can run it yourself.</p>
     <p style="font-size: var(--text-sm); color: var(--grey-400); max-width: 62ch; margin: -6px 0 0;">Paid is rented. Search and AI visibility is owned. Built once, refreshed quarterly, it compounds for years. The cost doesn't.</p>
 
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 520px; margin-top: 8px;">
@@ -92,9 +92,15 @@
         <a id="pb-next-cta" class="te-btn te-btn--primary te-btn--block" href="#">Start the lesson</a>
       </div>
 
+      <div class="te-card" style="padding: 18px 20px; border-color: color-mix(in oklab, var(--forest) 26%, transparent); background: var(--pale-green);">
+        <span class="te-eyebrow" style="color: var(--forest);">Your score out of 100</span>
+        <p style="margin: 10px 0 12px; font-size: var(--text-sm); color: var(--grey-700); line-height: 1.55;">Every store gets a score on the AEO Maturity Model. Certified is 80. Lesson 0.2 shows you how to get yours, and our live scorecard tool is coming soon.</p>
+        <a class="te-btn te-btn--secondary te-btn--sm" href="lessons/0-2-your-score-out-of-100/" style="border-color: var(--forest); color: var(--forest);">Get your baseline score</a>
+      </div>
+
       <div class="te-callout te-callout--takeaway">
         <span class="te-callout__label">Yours to keep</span>
-        <div class="te-callout__body"><p>Every lesson, SOP and prompt installs into your business and stays yours. As the models change, our live agents keep them current.</p></div>
+        <div class="te-callout__body"><p>Every lesson, prompt and playbook installs into your business and stays yours. As the models change, we keep the lessons current, and the app that runs it all for you is coming soon.</p></div>
       </div>
 
       <div class="te-card" style="padding: 16px 18px;">
@@ -150,47 +156,55 @@ const internalStatus = false; // show Loom/SOP/Agent build chips (internal). Set
 
 const ACTS = [
   { num: "0", short: "Orientation", title: "Orientation & baseline", pillar: "Start here",
-    blurb: "Understand what changed, place yourself on the maturity ladder, and lock in your baseline score before you change a thing.",
+    blurb: "Understand what changed, get your score out of 100, plug Claude into your store, and find your quick wins before you change a thing.",
     lessons: [
-      { id: "0.1", title: "The new rules of discovery", covers: "Zero-click, AI shopping, and the entity-confidence thesis.", mins: 7, loom: "port", sop: "built", agent: "na", url: "lessons/0-1-the-new-rules-of-discovery/" },
-      { id: "0.2", title: "Where you stand: the AI maturity ladder", covers: "Self-place Level 1 to 4 on your AI operation.", mins: 6, loom: "new", sop: "built", agent: "na" },
-      { id: "0.3", title: "Your baseline score", covers: "Run the diagnostic, log mentions, citations and sentiment.", mins: 10, loom: "new", sop: "new", agent: "built", link: PROMPT_PAGE },
+      { id: "0.1", title: "The new rules of discovery", covers: "Zero-click, AI shopping, and the entity-confidence thesis.", mins: 7, url: "lessons/0-1-the-new-rules-of-discovery/" },
+      { id: "0.2", title: "Where you stand: your score out of 100", covers: "The AEO Maturity Model: four pillars, five levels. Certified is 80.", mins: 8, url: "lessons/0-2-your-score-out-of-100/" },
+      { id: "0.3", title: "Plug Claude into your store", covers: "Set up Claude as your always-on SEO analyst, read-only and safe.", mins: 6, url: "lessons/0-3-plug-claude-into-your-store/" },
+      { id: "0.4", title: "The 30-minute quick-win audit", covers: "Five fast checks that become your ranked action plan.", mins: 7, url: "lessons/0-4-the-30-minute-quick-win-audit/" },
     ] },
   { num: "1", short: "Get found", title: "Get found", pillar: "Technical foundations",
-    blurb: "The foundations that let AI crawlers find, read and trust your store. Roughly 80 percent already exists in the Foundations guide.",
+    blurb: "The foundations that let AI crawlers find, read and trust your store, from robots.txt to selling inside ChatGPT itself.",
     lessons: [
-      { id: "1.1", title: "Open the doors", covers: "robots.txt, CDN, WAF and llms.txt. Stop blocking the crawlers.", mins: 9, loom: "new", sop: "built", agent: "new" },
-      { id: "1.2", title: "Product schema & GTINs", covers: "The single most-missed variable on priority products.", mins: 11, loom: "new", sop: "built", agent: "new" },
-      { id: "1.3", title: "Merchant feed optimisation", covers: "Google, Microsoft and Perplexity feeds. The universal key.", mins: 8, loom: "new", sop: "built", agent: "new" },
-      { id: "1.4", title: "Technical health & data integrity", covers: "Errors, duplication, metadata, Core Web Vitals, PDP consolidation.", mins: 10, loom: "new", sop: "built", agent: "new" },
-      { id: "1.5", title: "Priority pages", covers: "Answer-first restructuring and FAQ schema on the pages that matter.", mins: 9, loom: "new", sop: "built", agent: "port" },
+      { id: "1.1", title: "Open the doors to AI crawlers", covers: "robots.txt, CDN, WAF and llms.txt. 85% of brands are blocking the bots.", mins: 6, url: "lessons/1-1-open-the-doors/" },
+      { id: "1.2", title: "Escape Shopify's URL traps", covers: "Duplicates, canonicals, index control and redirects.", mins: 7, url: "lessons/1-2-escape-shopifys-url-traps/" },
+      { id: "1.3", title: "Product pages that sell themselves", covers: "Titles, descriptions and variants that rank and get quoted.", mins: 7, url: "lessons/1-3-product-pages-that-sell-themselves/" },
+      { id: "1.4", title: "Product schema & GTINs", covers: "The single most-missed variable in ecommerce AI visibility.", mins: 7, url: "lessons/1-4-product-schema-and-gtins/" },
+      { id: "1.5", title: "Collections: your biggest traffic pages", covers: "Fill the empty pages, tame the filters, fix the pagination.", mins: 8, url: "lessons/1-5-collections-your-biggest-traffic-pages/" },
+      { id: "1.6", title: "Structure & internal links", covers: "Three clicks max, and link votes that feed your money pages.", mins: 6, url: "lessons/1-6-structure-and-internal-links/" },
+      { id: "1.7", title: "Merchant feeds: the universal AI shopping key", covers: "Google, Microsoft, and the free listings most stores never claim.", mins: 6, url: "lessons/1-7-merchant-feeds/" },
+      { id: "1.8", title: "Agentic storefronts: sell inside ChatGPT", covers: "Shopify's agent-ready catalogue, in-chat checkout, and winning the AI shopper.", mins: 7, url: "lessons/1-8-agentic-storefronts/" },
+      { id: "1.9", title: "Speed & technical health", covers: "Core Web Vitals, app bloat, and the hygiene sweep that locks it in.", mins: 6, url: "lessons/1-9-speed-and-technical-health/" },
     ] },
   { num: "2", short: "Become the answer", title: "Become the answer", pillar: "Content engine",
-    blurb: "The biggest net-new build. Content AI actually cites: clusters, chunk retrieval, freshness and internal linking.",
+    blurb: "Content AI actually cites: research with intent, clusters, chunk retrieval, honest comparisons, a drafting engine and a refresh rhythm.",
     lessons: [
-      { id: "2.1", title: "Keyword & topic research", covers: "Coverage beats volume. What to target and why.", mins: 9, loom: "new", sop: "new", agent: "port" },
-      { id: "2.2", title: "Build your topic clusters", covers: "Pillar and spoke architecture. Map the relationships AI maps.", mins: 10, loom: "new", sop: "new", agent: "new" },
-      { id: "2.3", title: "Write for chunk retrieval", covers: "Answer-first, TL;DR, questions as subheads, parseable formatting.", mins: 11, loom: "new", sop: "new", agent: "new" },
-      { id: "2.4", title: "Drafting with Claude", covers: "Brand voice, structured drafts, the honest limits of DIY.", mins: 10, loom: "new", sop: "new", agent: "port" },
-      { id: "2.5", title: "Refresh & freshness cycles", covers: "Find decaying content in GSC, make substantial edits, the 90-day biology.", mins: 9, loom: "new", sop: "new", agent: "new" },
-      { id: "2.6", title: "Stitch it together", covers: "Internal linking from clusters to pillars to PDPs.", mins: 8, loom: "new", sop: "new", agent: "new" },
+      { id: "2.1", title: "Keywords with buying intent", covers: "Coverage beats volume. Find the searches with money behind them.", mins: 7, url: "lessons/2-1-keywords-with-buying-intent/" },
+      { id: "2.2", title: "Topic clusters: map what AI maps", covers: "Pillar and spoke architecture, sequenced by money.", mins: 6, url: "lessons/2-2-topic-clusters/" },
+      { id: "2.3", title: "Write for chunk retrieval", covers: "Answer-first structure, questions as subheads, formats machines lift.", mins: 7, url: "lessons/2-3-write-for-chunk-retrieval/" },
+      { id: "2.4", title: "Buying guides & comparisons AI quotes", covers: "The content shapes assistants lean on hardest, including honest competitor pages.", mins: 7, url: "lessons/2-4-buying-guides-and-comparisons/" },
+      { id: "2.5", title: "Drafting with Claude", covers: "Voice notes, hard briefs, honest edits. Scale without the sludge.", mins: 6, url: "lessons/2-5-drafting-with-claude/" },
+      { id: "2.6", title: "Refresh & freshness cycles", covers: "Find the decay in Search Console and run the 90-day rhythm.", mins: 6, url: "lessons/2-6-refresh-and-freshness/" },
+      { id: "2.7", title: "Stitch it together", covers: "Wire the clusters: pillar to spokes to products. The audit that closes the module.", mins: 5, url: "lessons/2-7-stitch-it-together/" },
     ] },
   { num: "3", short: "Get recommended", title: "Get recommended", pillar: "Authority & reputation",
-    blurb: "Only 23 percent of AI citations come from your own site. This module is the other 77 percent. Roughly 95 percent already built.",
+    blurb: "Only 23 percent of AI citations come from your own site. This module is the system for the other 77 percent.",
     lessons: [
-      { id: "3.1", title: "Why 77 percent", covers: "Most AI citations come from off your site. The framing.", mins: 7, loom: "new", sop: "built", agent: "na" },
-      { id: "3.2", title: "Review velocity programme", covers: "Semantic prompts, post-purchase sequence, AU/NZ compliance.", mins: 10, loom: "new", sop: "built", agent: "new" },
-      { id: "3.3", title: "Third-party review platforms", covers: "The APAC stack, crawlability, responding well.", mins: 9, loom: "new", sop: "built", agent: "new" },
-      { id: "3.4", title: "Reddit & community presence", covers: "Find your subreddits, declared brand account, rules of engagement.", mins: 10, loom: "new", sop: "built", agent: "new" },
-      { id: "3.5", title: "Digital PR & earned media", covers: "Target publications, pitch, track, the Wikipedia milestone.", mins: 11, loom: "new", sop: "built", agent: "new" },
-      { id: "3.6", title: "LinkedIn & founder presence", covers: "Why it matters for ecommerce, and a sustainable cadence.", mins: 8, loom: "new", sop: "built", agent: "new" },
+      { id: "3.1", title: "Why 77 percent", covers: "Most of what makes AI recommend you lives off your site. The framing.", mins: 5, url: "lessons/3-1-why-77-percent/" },
+      { id: "3.2", title: "Review velocity on autopilot", covers: "50 recent reviews beat 800 old ones. The post-purchase sequence.", mins: 7, url: "lessons/3-2-review-velocity/" },
+      { id: "3.3", title: "Third-party review platforms", covers: "Google, Trustpilot, ProductReview: the profiles that vouch for you.", mins: 6, url: "lessons/3-3-third-party-review-platforms/" },
+      { id: "3.4", title: "Reddit, Quora & the forums AI reads", covers: "4x citation rates, the 90/10 rule, and staying welcome.", mins: 7, url: "lessons/3-4-reddit-quora-and-the-forums-ai-reads/" },
+      { id: "3.5", title: "Digital PR & earned media", covers: "48% of LLM citations are earned media. Roundups, data stories, Wikipedia.", mins: 7, url: "lessons/3-5-digital-pr-and-earned-media/" },
+      { id: "3.6", title: "LinkedIn & founder presence", covers: "A top-5 cited domain, and a cadence you'll actually sustain.", mins: 6, url: "lessons/3-6-linkedin-and-founder-presence/" },
     ] },
   { num: "4", short: "Keep winning", title: "Keep winning", pillar: "Measurement & rhythm",
-    blurb: "Short and light. Track share of voice over time, run the operating rhythm, and know when to bring us in.",
+    blurb: "Prove it's working: share of voice, the money view in GA4, the operating rhythm, and the 100-day plan that ties it all together.",
     lessons: [
-      { id: "4.1", title: "Measure what matters", covers: "Re-run your baseline, track share of voice and sentiment.", mins: 8, loom: "new", sop: "new", agent: "built", link: PROMPT_PAGE },
-      { id: "4.2", title: "The operating rhythm", covers: "Observe, decide, delegate. Weekly and 90-day cadence.", mins: 7, loom: "port", sop: "new", agent: "new" },
-      { id: "4.3", title: "When to DIY, when to bring us in", covers: "Honest build vs buy vs delegate, and your next step.", mins: 6, loom: "port", sop: "new", agent: "na" },
+      { id: "4.1", title: "Measure what matters", covers: "Re-run your baseline, track share of voice and sentiment per platform.", mins: 6, url: "lessons/4-1-measure-what-matters/" },
+      { id: "4.2", title: "Prove the money", covers: "AI traffic and revenue in GA4, plus the branded-search proxy.", mins: 6, url: "lessons/4-2-prove-the-money/" },
+      { id: "4.3", title: "The operating rhythm", covers: "Weekly, monthly, quarterly. Observe, decide, delegate.", mins: 5, url: "lessons/4-3-the-operating-rhythm/" },
+      { id: "4.4", title: "The 100-day plan", covers: "The whole playbook, sequenced day by day from baseline to proof.", mins: 6, url: "lessons/4-4-the-100-day-plan/" },
+      { id: "4.5", title: "When to DIY, when to bring us in", covers: "The honest build-vs-buy call, and the paths from here.", mins: 5, url: "lessons/4-5-when-to-diy-when-to-bring-us-in/" },
     ] },
 ];
 

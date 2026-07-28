@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The new rules of discovery — The AI Search Playbook · Team Empathy</title>
-<meta name="description" content="How people find ecommerce brands has changed shape. Zero-click, AI shopping, and the entity-confidence thesis: in 2026 you optimise to become the brand AI recommends, not to rank a page.">
-<link rel="canonical" href="https://playbook.teamempathy.co.nz/lessons/0-1-the-new-rules-of-discovery/">
+<title>The 30-minute quick-win audit — The AI Search Playbook · Team Empathy</title>
+<meta name="description" content="A fast, repeatable audit that finds the highest-impact fixes on your Shopify store and turns them into a ranked action plan before you start the real build.">
+<link rel="canonical" href="https://playbook.teamempathy.co.nz/lessons/0-4-the-30-minute-quick-win-audit/">
 <link rel="stylesheet" href="../../ds/styles.css">
 <style>
   body { background: var(--paper-50); }
@@ -67,66 +67,54 @@
   <div class="te-container lesson-wrap" style="display: flex; flex-direction: column; gap: 18px;">
     <a class="crumb" href="../../">← The AI Search Playbook</a>
     <div style="display: flex; flex-direction: column; gap: 12px;">
-      <span class="te-eyebrow">Module 0 · Orientation & baseline · Lesson 0.1</span>
-      <h1 style="font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.08; margin: 0; max-width: 20ch;">The new rules of <span class="te-editorial">discovery</span></h1>
+      <span class="te-eyebrow">Module 0 · Orientation & baseline · Lesson 0.4</span>
+      <h1 style="font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.08; margin: 0; max-width: 20ch;">The 30-minute quick-win <span class="te-editorial">audit</span></h1>
       <div style="display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--grey-400); letter-spacing: var(--ls-wide); text-transform: uppercase;">
-        <span>7 min read</span><span style="opacity:.5;">·</span><span>Foundational</span>
+        <span>7 min read</span><span style="opacity:.5;">·</span><span>Baseline</span>
       </div>
     </div>
-    <p style="font-size: var(--text-lead); color: var(--grey-500); margin: 6px 0 0;">The shift in how people find ecommerce brands, before we get to any tactics. Read this once, then forward it to anyone on your team who needs the same starting point.</p>
+    <p style="font-size: var(--text-lead); color: var(--grey-500); margin: 6px 0 0;">You've got your score and Claude's plugged in. Now run one fast sweep to catch the quick wins, the fixes that take minutes and start paying back straight away.</p>
   </div>
 </section>
 
 <section style="padding: 28px 0 16px;">
   <article class="te-container lesson-wrap te-article">
 
-    <h2>The shift</h2>
-    <p>Search has changed shape.</p>
-    <p>For twenty years, "search" meant typing a few words into Google, looking at ten blue links, and clicking through to read the answer yourself. That is not how most product research happens now. People ask ChatGPT, Perplexity, Claude, or Google's AI Overviews a full question, like "what's the best magnesium glycinate for sleep" or "comfortable trainers for plantar fasciitis under $200", and get a direct answer back. Often with a shortlist of brands. Often without ever clicking a link.</p>
-    <p>The numbers behind it are not subtle:</p>
-    <ul>
-      <li>ChatGPT sent ecommerce brands <strong>1,079% more shopping traffic last year</strong> than the year before. <span class="src">(Visibility Labs / Search Engine Land)</span></li>
-      <li>On Shopify specifically, AI-driven traffic is up <strong>8x</strong> and AI-driven orders up <strong>15x</strong> since January 2025. <span class="src">(Kyle Risley, Senior SEO Lead at Shopify, 2026)</span></li>
-      <li>Visitors from AI platforms convert <strong>31% better</strong> than non-branded organic. <span class="src">(Profound, 94 brands tracked, 2025)</span></li>
-    </ul>
-    <p>This is the current state of how purchase research happens for a serious slice of your category. 61% of consumers have already used an AI tool to research a purchase, and 64% say they plan to do more of it this year. <span class="src">(Adobe Analytics; Shopify, 2026)</span> The traffic models that built the last decade of ecommerce are being replaced by something different.</p>
+    <h2>Why audit before you build</h2>
+    <p>Most stores are leaking visibility in ways that take 10 minutes to fix and months to notice on their own. Blocked crawlers, empty collection pages, missing product identifiers, supplier descriptions copied onto 40 products. Finding them first means every module you work through lands on a clean foundation.</p>
+    <p>This audit is deliberately shallow and fast. The deep versions live in the modules. This is the sweep that tells you which modules will pay you back fastest.</p>
 
-    <h2>What you're actually optimising for now</h2>
-    <p>This is the mental shift the whole Playbook hinges on:</p>
-    <div class="pullquote">
-      <span class="label">The thesis</span>
-      <p>In 2026, you are not optimising for a ranking algorithm. You are optimising to become the entity AI systems have the highest confidence in recommending for your category.</p>
-    </div>
-    <p>That is a structural change. The old job was making one page rank higher than another for one keyword. The new job is making your brand the answer an AI gives when someone asks a question about your category. Shopify APAC's Director of Partnerships puts it the same way:</p>
-    <blockquote class="quote">
-      <p>"Search is becoming a conversation, and commerce is becoming agentic. In 2026, visibility is less about being the loudest, and more about being the easiest for machines to understand and trust."</p>
-      <cite>Rhys Furner, Shopify APAC</cite>
-    </blockquote>
-    <p>AI returns the answer. The first brand it names is the brand the customer considers first.</p>
-    <p><strong>93% of AI search sessions now end without anyone clicking through to a website.</strong> <span class="src">(AirOps 2026 State of AI Search Report)</span> The consideration set is decided inside the AI before you would traditionally know the customer existed.</p>
-    <p>Everything else in this Playbook, the technical foundations, the content engine, the reviews, the digital PR, the Reddit work, the LinkedIn presence, all of it builds the confidence AI has in recommending your brand.</p>
+    <h2>The five checks</h2>
+    <ol>
+      <li><strong>Can AI get in?</strong> Open yourstore.com/robots.txt. Look for GPTBot, ClaudeBot, PerplexityBot or Google-Extended being disallowed. 85% of brands are accidentally blocking AI crawlers, and it's a two-minute fix. <span class="src">(Full fix in lesson 1.1)</span></li>
+      <li><strong>Do your products carry ID?</strong> Pick your three bestsellers and check for barcodes (GTINs) in Shopify admin. 60% of ecommerce catalogues have missing GTINs, and AI shopping surfaces lean on them hard. <span class="src">(Lesson 1.4)</span></li>
+      <li><strong>Are your collections empty?</strong> Open your five biggest collection pages. If they're a grid of products with no copy, you're sitting on your biggest untapped traffic pages. <span class="src">(Lesson 1.5)</span></li>
+      <li><strong>Would AI quote your content?</strong> Open your most recent blog post, if you have one. Does the first paragraph answer a question a buyer would actually ask? Or does it warm up for 200 words first? <span class="src">(Module 2)</span></li>
+      <li><strong>Does anyone vouch for you?</strong> Search your brand name plus "review" and your brand name on Reddit. What comes up is what the AI sees when it decides whether you're safe to recommend. <span class="src">(Module 3)</span></li>
+    </ol>
 
-    <h2>Why this is the 2011 window all over again</h2>
-    <p>Think about who won SEO between 2011 and 2015. The brands that built the asset early, while it was still cheap to do. They compounded for a decade. They paid less and less for traffic while everyone else paid more.</p>
-    <p>The same window is open right now, just one platform shift further on.</p>
-    <p>The brands that install AI search visibility in 2026 will quietly compound past competitors who are still trying to outspend their way to growth. Most founders have not priced this into their growth model yet. That is the opportunity.</p>
-
-    <h2>Paid is rented. Search and AI is owned.</h2>
-    <p>Paid ads work while you spend. The day you stop, it stops. CACs are creeping. MERs are flattening. The maths gets harder every quarter.</p>
-    <p>Search and AI visibility is the opposite shape of asset. Built once, refreshed quarterly, it keeps sending qualified buyers month after month, year after year. The asset compounds. The cost does not.</p>
-    <p>That is the system the Playbook teaches you to build.</p>
+    <h2>Turn it into a ranked plan</h2>
+    <p>Score each check as a pass, a partial, or a fail. Fails on checks 1 and 2 are your first fixes: they're fast and they gate everything else. Fails on 3 and 4 tell you whether Module 1 or Module 2 is your biggest lever. A fail on 5 means Module 3 is where your gap is, and honestly, that's true for most stores.</p>
+    <p>Write the plan down as a list in priority order. As you work through the playbook, this is the list you're crossing off.</p>
 
     <div class="donow">
       <span class="label">Do this now</span>
-      <p>Ask ChatGPT a buying question in your category: "best [your product] for [use case]". Note which brands it names. Those are the brands you're up against for AI visibility, and by the end of this playbook you'll know exactly how to join them.</p>
+      <p>Run the five checks. 30 minutes, tops. Write down your pass/partial/fail for each, then run the prompt below to have Claude turn it into your ranked action plan.</p>
     </div>
 
     <div class="te-prompt te-prompt--bare" style="margin-top: 18px;">
       <div class="te-prompt__bar">
         <span class="te-prompt__label"><span class="te-prompt__dot"></span>Run it with Claude</span>
-        <button class="te-prompt__copy" type="button" data-copy="prompt-0-1">Copy</button>
+        <button class="te-prompt__copy" type="button" data-copy="prompt-0-4">Copy</button>
       </div>
-      <pre id="prompt-0-1" class="te-prompt__body">Act as an AI search analyst. For my store [URL], list the ten questions a buyer in my category would ask ChatGPT or Perplexity before purchasing, and note whether my brand is likely to be named in the answer today.</pre>
+      <pre id="prompt-0-4" class="te-prompt__body">Here are my 30-minute audit results for [yourstore.com]:
+1. AI crawlers allowed: [pass/partial/fail + what you saw]
+2. GTINs on bestsellers: [pass/partial/fail]
+3. Collection pages have copy: [pass/partial/fail]
+4. Content answers questions first: [pass/partial/fail]
+5. Third-party proof (reviews/Reddit): [pass/partial/fail + what you found]
+
+Turn this into a ranked action plan. For each item: the fix, why it matters for AI search visibility, effort (minutes/hours/days), and expected impact (high/medium/low). Order by impact-per-effort.</pre>
     </div>
 
     <div class="app-soon">
@@ -147,8 +135,8 @@
       <button id="markBtn" class="te-btn te-btn--primary" type="button">Mark complete</button>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;">
-      <a class="crumb" href="../../">← Back to the playbook</a>
-      <a class="crumb" href="../0-2-your-score-out-of-100/">0.2 Where you stand: your score out of 100 →</a>
+      <a class="crumb" href="../0-3-plug-claude-into-your-store/">← 0.3 Plug Claude into your store</a>
+      <a class="crumb" href="../1-1-open-the-doors/">1.1 Open the doors to AI crawlers →</a>
     </div>
   </div>
 </section>
@@ -183,8 +171,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "The new rules of discovery",
-  "description": "How people find ecommerce brands has changed shape. Zero-click, AI shopping, and the entity-confidence thesis: in 2026 you optimise to become the brand AI recommends, not to rank a page.",
+  "headline": "The 30-minute quick-win audit",
+  "description": "A fast, repeatable audit that finds the highest-impact fixes on your Shopify store and turns them into a ranked action plan before you start the real build.",
   "author": { "@type": "Organization", "name": "Team Empathy", "url": "https://teamempathy.co.nz" },
   "publisher": { "@type": "Organization", "name": "Team Empathy" },
   "isPartOf": { "@type": "Course", "name": "The AI Search Playbook for Ecommerce" },
@@ -194,7 +182,7 @@
 
 <script>
 const STORE_KEY = "te_playbook_state_v1";
-const LESSON_ID = "0.1";
+const LESSON_ID = "0.4";
 let state = { done: {} };
 try { const r = localStorage.getItem(STORE_KEY); if (r) state = JSON.parse(r); } catch (e) {}
 if (!state.done) state.done = {};
